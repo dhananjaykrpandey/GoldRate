@@ -85,7 +85,7 @@ namespace GoldRate
                 })
            .AddHttpCompression();
 
-            services.AddDbContext<DbGoldRateContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MOHEswatiniDBConnection")));
+            services.AddDbContext<DbGoldRateContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GoldRate")));
             services.AddMvc();
 
 

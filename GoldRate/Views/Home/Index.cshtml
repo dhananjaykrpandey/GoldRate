@@ -39,5 +39,46 @@
         </div>
     </div>
 </div>
+<button value="Test" name="bb-hello-world" id="bb-hello-world" class="btn btn-block bg-danger" />
 
+@section scripts
+{
 
+<script>
+    //$(function () {
+    //           $('.bb-hello-world').on('click', function (e) {
+    //        bootbox.alert('Hello world!');
+    //    });
+    //});
+
+    $(document).ready(function () {
+        $("#bb-hello-world").click(function () {
+           // bootbox.alert('Hello world!');
+
+            //bootbox.alert({
+            //    message: "This is the small alert!",
+            //    size: 'small'
+            //});
+            swal("Good job!", "You clicked the button!", "success");
+            //bootbox.confirm({
+            //    message: "This is a confirm with custom button text and color! Do you like it?",
+            //    buttons: {
+            //        confirm: {
+            //            label: 'Yes',
+            //            className: 'btn-success'
+            //        },
+            //        cancel: {
+            //            label: 'No',
+            //            className: 'btn-danger'
+            //        }
+            //    },
+            //    callback: function (result) {
+            //        console.log('This was logged in the callback: ' + result);
+            //    }
+            //});
+
+        });
+    });
+
+</script>
+}

@@ -29,17 +29,17 @@ namespace GoldRate.Controllers
 
         public IActionResult Index()
         {
-            var remoteIpAddress = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
-            if (remoteIpAddress== null || remoteIpAddress== "::1")
-            {
-                remoteIpAddress = "92.96.174.18";
-            }
-            var client = new RestClient($"https://apility-io-ip-geolocation-v1.p.rapidapi.com/{remoteIpAddress}");
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("x-rapidapi-host", "apility-io-ip-geolocation-v1.p.rapidapi.com");
-            request.AddHeader("x-rapidapi-key", "8ba8473872mshd0dc8b3606c8b51p140a8djsnb64af90ef474");
-            request.AddHeader("accept", "application/json");
-            IRestResponse response = client.Execute(request);
+            //var remoteIpAddress = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            //if (remoteIpAddress== null || remoteIpAddress== "::1")
+            //{
+            //    remoteIpAddress = "92.96.174.18";
+            //}
+            //var client = new RestClient($"https://apility-io-ip-geolocation-v1.p.rapidapi.com/{remoteIpAddress}");
+            //var request = new RestRequest(Method.GET);
+            //request.AddHeader("x-rapidapi-host", "apility-io-ip-geolocation-v1.p.rapidapi.com");
+            //request.AddHeader("x-rapidapi-key", "8ba8473872mshd0dc8b3606c8b51p140a8djsnb64af90ef474");
+            //request.AddHeader("accept", "application/json");
+            //IRestResponse response = client.Execute(request);
 
             return View();
         }
