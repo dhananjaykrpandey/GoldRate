@@ -151,8 +151,8 @@ namespace GoldRate
                 OnPrepareResponse = ctx =>
                 {
                     // Cache static files for 30 days
-                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=600");
-                    ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(30).ToString("R", CultureInfo.InvariantCulture));
+                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=1");
+                    ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(1).ToString("R", CultureInfo.InvariantCulture));
                 }
             });
 

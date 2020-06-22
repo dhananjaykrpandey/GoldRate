@@ -71,7 +71,7 @@ namespace GoldRate.Controllers
     }
     public static class BuilderExtensions
     {
-        public static IApplicationBuilder UseSitemapMiddleware(this IApplicationBuilder app, string rootUrl = "https://localhost:49211")
+        public static IApplicationBuilder UseSitemapMiddleware(this IApplicationBuilder app, string rootUrl = "https://localhost:44313/")
         {
             return app.UseMiddleware<SitemapMiddleware>(new[] { rootUrl });
         }

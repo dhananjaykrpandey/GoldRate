@@ -17,9 +17,9 @@ namespace GoldRate.Controllers
 {
     public class LoginsController : Controller
     {
-        private readonly DbMOHEswatini _context;
+        private readonly DbGoldRateContext _context;
 
-        public LoginsController(DbMOHEswatini context)
+        public LoginsController(DbGoldRateContext context)
         {
             _context = context;
         }
@@ -82,7 +82,7 @@ namespace GoldRate.Controllers
             catch (Exception ex)
             {
 
-                ModelState.AddModelError(string.Empty, "Some Problem occure while sending request please report it." + ex.Message.ToString());
+                ModelState.AddModelError(string.Empty, "Some Problem occur while sending request please report it." + ex.Message.ToString());
                 return View();
             }
         }
