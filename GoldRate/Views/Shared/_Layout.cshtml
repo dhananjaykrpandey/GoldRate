@@ -9,52 +9,125 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>@ViewData["Title"] - GoldRate</title>
+    <!-- Favicons -->
+    <link href="~/images/goldratelogo32X2.png" rel="icon">
+    <link href="~/images/goldratelogo32X2.png" rel="apple-touch-icon">
+
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
-    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="../../css/styles.css" rel="stylesheet" />
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-transparent border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GoldRate</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light border-bottom">
+
+            <a href="#" class="navbar-brand">
+                <img src="~/images/goldratelogo.png" height="30" width="30" alt="Gold Rate" title="Gold Rate" class="d-inline-block align-top">
+                <span class="font-weight-bold text-danger">Gold Rate &nbsp;&nbsp;&nbsp;</span>
+
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-danger" href="#"> <i class="fas fa-home"></i>&nbsp;Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="#"><i class="fas fa-info-circle"></i><span>&nbsp;About Us</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success" href="#"><i class="fas fa-coins"></i>&nbsp;Gold Price</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#"><i class="fas fa-hockey-puck"></i>&nbsp;Silver Price</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-info" href="#"><i class="fas fa-gas-pump"></i>&nbsp;Fuel Price</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-primary" href="#"><i class="fas fa-phone"></i><span>&nbsp;Contact Us</span></a>
+                    </li>
+                </ul>
+
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 mr-sm-3" type="submit"><i class="fas fa-search"></i>&nbsp;Search</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0  mr-auto" type="submit"><i class="fas fa-user"></i>&nbsp;Login</button>
+                </form>
             </div>
         </nav>
     </header>
-    <div id="layoutSidenav_content">
-        <main role="main">
-            <div class="container-fluid">
-                @*<div class="container">*@
-                @*<main role="main" class="pb-3">*@
-                @RenderBody()
-                @*</div>*@
-            </div>
-        </main>
-    </div>
 
-
-    <footer class="border-top footer text-muted">
+    <main role="main" class="flex-shrink-0">
+        @*<div id="layoutSidenav_content">*@
         <div class="container">
-            &copy; 2020 - GoldRate - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <br />
+            @RenderBody()
+
+        </div>
+        @*</div>*@
+    </main>
+
+    <footer class="card-footer mt-auto py-3 border ">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <small class="d-block mb-3 text-muted">&copy; 2019-@DateTime.Now.Year GoldRate</small>
+                    <p>
+                        <small>
+                            <b>GoldRate.in</b> provides gold prices obtained from sources believed to be reliable,
+                            but we do not guarantee their accuracy.
+                            It is accepted by the site visitor on the condition that errors or omissions shall not be made the basis for any claim, demand or cause for action.
+                        </small>
+                    </p>
+
+                </div>
+                <div class="col-6 col-md">
+                    <p class="h5">Links</p>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Home</a></li>
+                        <li><a class="text-muted" href="#">Privacy</a></li>
+                        <li><a class="text-muted" href="#">Declaimer</a></li>
+                        <li><a class="text-muted" href="#">Terms</a></li>
+                        <li><a class="text-muted" href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                @*<div class="col-6 col-md">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="#">Resource</a></li>
+                            <li><a class="text-muted" href="#">Resource name</a></li>
+                            <li><a class="text-muted" href="#">Another resource</a></li>
+                            <li><a class="text-muted" href="#">Final resource</a></li>
+                        </ul>
+                    </div>*@
+                <div class="col-6 col-md">
+                    <p class="h6"> OUR NEWSLETTER</p>
+                    <p class="lead">Subscribe to our newsletter!</p>
+                    <p>
+                        <small>
+                            You’ll get an email about once a week. We’ll never share your address.
+                        </small>
+                    </p>
+                    <form class="form-inline mt-4 mt-md-0">
+
+                        <input class="form-control mr-sm-4" type="text" placeholder="example@example.com" aria-label="Email Address">
+                        <button class="btn btn-danger my-2 mr-sm-3" type="submit"><i class="fas fa-paper-plane"></i>&nbsp;Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 
+
+    <!-- Footer -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="~/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
