@@ -22,14 +22,14 @@ namespace GoldRate.Controllers
         //{
         //    _logger = logger;
         //}
-        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor accessor,DbGoldRateContext dbGoldRateContext)
+        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor accessor, DbGoldRateContext dbGoldRateContext)
         {
             _logger = logger;
             _accessor = accessor;
             _DbGoldRateContext = dbGoldRateContext;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             //var remoteIpAddress = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
             //if (remoteIpAddress== null || remoteIpAddress== "::1")
@@ -44,20 +44,44 @@ namespace GoldRate.Controllers
             //IRestResponse response = client.Execute(request);
 
 
-            List<mGoldRate> reservationList = new List<mGoldRate>();
+
+
+
+            return View(UaeHome().Result);
+        }
+
+        private async Task<mUaeHome> UaeHome()
+        {
+            mUaeHome _UaeHome = new mUaeHome(); ;
+
+            List<mGoldRate> mGoldRates = new List<mGoldRate>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44316/goldrate"))
+                using (var response = httpClient.GetAsync("https://localhost:44316/goldrate"))
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    reservationList = JsonConvert.DeserializeObject<List<mGoldRate>>(apiResponse);
+                    string apiResponse = await response.Result.Content.ReadAsStringAsync();
+
+                    mGoldRates = JsonConvert.DeserializeObject<List<mGoldRate>>(apiResponse);
                 }
             }
 
+            if (mGoldRates != null && mGoldRates.Count() > 0)
+            {
+                
+                _UaeHome.GoldPriceOz = mGoldRates[0].GoldPriceEvening > 0 ? mGoldRates[0].GoldPriceEvening : mGoldRates[0].GoldPriceAfternoon > 0 ? mGoldRates[0].GoldPriceAfternoon : mGoldRates[0].GoldPriceMorning;
+                _UaeHome.GoldPrice24 = mGoldRates[1].GoldPriceEvening > 0 ? mGoldRates[1].GoldPriceEvening : mGoldRates[1].GoldPriceAfternoon > 0 ? mGoldRates[1].GoldPriceAfternoon : mGoldRates[1].GoldPriceMorning;
+                _UaeHome.GoldPrice22 = mGoldRates[2].GoldPriceEvening > 0 ? mGoldRates[2].GoldPriceEvening : mGoldRates[2].GoldPriceAfternoon > 0 ? mGoldRates[2].GoldPriceAfternoon : mGoldRates[2].GoldPriceMorning;
+                _UaeHome.GoldPrice21 = mGoldRates[3].GoldPriceEvening > 0 ? mGoldRates[3].GoldPriceEvening : mGoldRates[3].GoldPriceAfternoon > 0 ? mGoldRates[3].GoldPriceAfternoon : mGoldRates[3].GoldPriceMorning;
+                _UaeHome.GoldPrice18 = mGoldRates[4].GoldPriceEvening > 0 ? mGoldRates[4].GoldPriceEvening : mGoldRates[4].GoldPriceAfternoon > 0 ? mGoldRates[4].GoldPriceAfternoon : mGoldRates[4].GoldPriceMorning;
+                //_UaeHome.GoldPriceUpdate =mGoldRates[0].GoldPriceEvening > 0 ?  new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,18,30,0) : mGoldRates[].GoldPriceAfternoon > 0 ? new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 14, 30, 0) : new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 30, 0);
+            }
 
-            return View();
+
+
+
+
+            return _UaeHome;
         }
-
 
 
         public IActionResult Privacy()
