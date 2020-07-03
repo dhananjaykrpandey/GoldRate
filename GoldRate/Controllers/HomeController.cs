@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using GoldRate.Models;
 using RestSharp;
 using Microsoft.AspNetCore.Http;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace GoldRate.Controllers
 {
@@ -27,7 +29,7 @@ namespace GoldRate.Controllers
             _DbGoldRateContext = dbGoldRateContext;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             //var remoteIpAddress = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
             //if (remoteIpAddress== null || remoteIpAddress== "::1")
@@ -41,8 +43,22 @@ namespace GoldRate.Controllers
             //request.AddHeader("accept", "application/json");
             //IRestResponse response = client.Execute(request);
 
+
+            List<mGoldRate> reservationList = new List<mGoldRate>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://localhost:44316/goldrate"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    reservationList = JsonConvert.DeserializeObject<List<mGoldRate>>(apiResponse);
+                }
+            }
+
+
             return View();
         }
+
+
 
         public IActionResult Privacy()
         {
