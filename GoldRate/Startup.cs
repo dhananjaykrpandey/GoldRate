@@ -37,8 +37,8 @@ namespace GoldRate
             //Old Code/services.AddControllersWithViews();
             services.AddResponseCaching(options =>
             {
-                options.MaximumBodySize = 1024;
-                options.UseCaseSensitivePaths = true;
+                options.MaximumBodySize = 64;
+                options.UseCaseSensitivePaths = false;
             });
             services.Configure<BrotliCompressionProviderOptions>(options =>
             {
@@ -154,7 +154,7 @@ namespace GoldRate
                 {
                     // Cache static files for 30 days
                     ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=1");
-                    ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddDays(1).ToString("R", CultureInfo.InvariantCulture));
+                    ctx.Context.Response.Headers.Append("Expires", DateTime.UtcNow.AddSeconds(1).ToString("R", CultureInfo.InvariantCulture));
                 }
             });
 
@@ -166,7 +166,7 @@ namespace GoldRate
                     new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
                     {
                         Public = true,
-                        MaxAge = TimeSpan.FromSeconds(100000)
+                        MaxAge = TimeSpan.FromSeconds(10)
                     };
                 context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
                     new string[] { "Accept-Encoding" };
