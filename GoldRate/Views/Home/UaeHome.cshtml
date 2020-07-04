@@ -70,7 +70,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-danger font-weight-bold">g</span>
                             </div>
-                            <input asp-for="GoldWeight" type="number" name="GoldWeight" class="form-control text-info"
+                            <input  type="number" name="GoldWeight" class="form-control text-info"
                                    id="GoldWeight" placeholder="Enter Gold Weight (gram)" v-model="GoldWeight" maxlength="3"
                                    :min="1" :max="3000" onKeyPress="if(this.value.length>3    ) return false;">
                         </div>
