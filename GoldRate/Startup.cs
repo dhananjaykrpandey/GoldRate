@@ -34,6 +34,7 @@ namespace GoldRate
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             //Old Code/services.AddControllersWithViews();
             services.AddResponseCaching(options =>
             {
@@ -166,7 +167,7 @@ namespace GoldRate
                     new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
                     {
                         Public = true,
-                        MaxAge = TimeSpan.FromSeconds(10)
+                        MaxAge = TimeSpan.FromSeconds(-1)
                     };
                 context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
                     new string[] { "Accept-Encoding" };
@@ -186,6 +187,7 @@ namespace GoldRate
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                
             });
             // var webRootPath = env.WebRootPath;
             // call rotativa conf passing env to get web root path

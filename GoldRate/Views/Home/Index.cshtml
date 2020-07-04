@@ -1,61 +1,11 @@
-﻿@model mUaeHome
+﻿
 @{
     ViewData["Title"] = "Home Page";
 }
 @*<div class="row justify-content-center">
     <div class="col-lg-8 col-sm-6 col-md-6">*@
 
-    <h1 class="mt-5">UAE Gold Rates (AED)</h1>
-    <p class="lead">Update On [ UAE Time <code>@DateTime.Now.ToLongDateString() @DateTime.Now.ToLongTimeString()  </code>] [ UTC Time <code>  @DateTime.UtcNow]</code>.</p>
-<p>Source: Dubai Gold & Jewelery Group.</p>
-<div class="row">
-    <div class="col-xl-2 col-md-6">
-        <div class="card bg-primary text-white mb-4">
-            <div class="card-body">OUNCE</div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-                AED   @Model.GoldPriceOz<span></span>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-        <div class="card bg-danger     text-white mb-4">
-            <div class="card-body">24 Carat</div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-                AED   @Model.GoldPrice24 <span>(g)</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-        <div class="card bg-success text-white mb-4">
-            <div class="card-body">22 Carat</div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-                AED   @Model.GoldPrice22<span>(g)</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-        <div class="card bg-info text-white mb-4">
-            <div class="card-body">21 Carat</div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-                AED   @Model.GoldPrice21<span>(g)</span>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-2 col-md-6">
-        <div class="card bg-secondary text-white mb-4">
-            <div class="card-body">18 Carat</div>
-            <div class="card-footer d-flex align-items-center justify-content-between">
-                AED   @Model.GoldPrice18<span>(g)</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-2">
 
-        <button value="Test" name="bb-hello-world" id="bb-hello-world" class="btn btn-block bg-danger" />
-    </div>
-</div>
 
 <h1 class="mt-5">Sticky footer with fixed navbar</h1>
 <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>main &gt; .container</code>.</p>

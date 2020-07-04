@@ -13,9 +13,9 @@ namespace GoldRate.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(name: "iID", TypeName = "int", Order = 0)]
         public int iID { get; set; }
-    
+
         [Column(name: "rGoldPriceOz", TypeName = "decimal(9,3)", Order = 1)]
-        public decimal GoldPriceOz { get; set; }
+        public decimal GoldPriceOz { get; set; } = 0;
         
         [Column(name: "rGoldPrice24", TypeName = "decimal(9,3)", Order = 2)]
         public decimal GoldPrice24 { get; set; }
@@ -31,6 +31,9 @@ namespace GoldRate.Models
 
         [Column(name: "dGoldPriceUpdate", TypeName = "datetime", Order = 6)]
         public DateTime GoldPriceUpdate { get; set; }
+
+        [Column(name: "rGoldPrice18", TypeName = "decimal(9,3)", Order = 5)]
+        public decimal GoldWeight { get; set; }
 
         /**********************************************************/
 

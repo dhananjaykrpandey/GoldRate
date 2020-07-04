@@ -1,0 +1,248 @@
+﻿@using Microsoft.AspNetCore.Components
+@model GoldRate.Models.mUaeHome
+
+@{
+    ViewData["Title"] = "UAE Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="mt-5">UAE Gold Rates (AED)</h1>
+<p class="lead">Update On [ UAE Time <code>@DateTime.Now.ToLongDateString() @DateTime.Now.ToLongTimeString()  </code>] [ UTC Time <code>  @DateTime.UtcNow]</code>.</p>
+<p>Source: Dubai Gold & Jewelery Group.</p>
+<div class="row">
+    <div class="col-xl-2 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">OUNCE</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.GoldPriceOz)<span></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-6">
+        <div class="card bg-danger     text-white mb-4">
+            <div class="card-body">24 Carat</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.GoldPrice24) <span>(g)</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">22 Carat</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.GoldPrice22)<span>(g)</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-6">
+        <div class="card bg-info text-white mb-4">
+            <div class="card-body">21 Carat</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.GoldPrice21)<span>(g)</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-md-6">
+        <div class="card bg-secondary text-white mb-4">
+            <div class="card-body">18 Carat</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.GoldPrice18)<span>(g)</span>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div id="app" class="row">
+    @*<div>
+            <h1>Count is: {{ count }}</h1>
+            <br>
+            <p>
+                <button v-on:click="count++">Increment Count!</button>
+            </p>
+            <br>
+        </div>*@
+    <div class="col-lg-12 col-sm-12">
+        <div class="card bg-light text-dark mb-4">
+            <div class="row m-2">
+                <div class="col-xl-3 col-md-6 ">
+                    <div class="form-group">
+                        <label for="GoldValue">Enter Gold Weight</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">g</span>
+                            </div>
+                            <input asp-for="GoldWeight" type="number" name="GoldWeight" class="form-control text-info"
+                                   id="GoldWeight" placeholder="Enter Gold Weight (gram)" v-model="GoldWeight" maxlength="3"
+                                   :min="1" :max="3000" onKeyPress="if(this.value.length>3    ) return false;">
+                        </div>
+                       
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col-xl-3 col-md-6">
+
+
+                    <div class="form-group">
+                        <label for="GoldValue">
+                            Price For {{ GoldWeight }}  Gram 24 Carat Gold &#64;&nbsp;AED&nbsp; @Html.DisplayFor(model => model.GoldPrice24)
+                        </label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="GoldValue" class="form-control text-black bg-white font-weight-bold" id="GoldValue" placeholder="000.000" v-model="GoldPrice24" readonly>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="form-group">
+                        <label for="GoldValue">  Price For {{ GoldWeight }}  Gram 22 Carat Gold &#64;&nbsp;AED&nbsp;@Html.DisplayFor(model => model.GoldPrice22)</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="GoldValue" class="form-control text-black bg-white font-weight-bold" id="GoldValue" placeholder="000.000" v-model="GoldPrice22" readonly>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="form-group">
+                        <label for="GoldValue"> Price For {{ GoldWeight }}  Gram 21 Carat Gold &#64;&nbsp;AED&nbsp;@Html.DisplayFor(model => model.GoldPrice21)</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="GoldValue" class="form-control text-black bg-white font-weight-bold" id="GoldValue" placeholder="000.000" v-model="GoldPrice21" readonly>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="form-group">
+                        <label for="GoldValue"> Price For {{ GoldWeight }}  Gram 18 Carat Gold &#64;&nbsp;AED&nbsp;@Html.DisplayFor(model => model.GoldPrice18)</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="GoldValue" class="form-control text-black bg-white font-weight-bold" id="GoldValue" placeholder="000.000" v-model="GoldPrice18" readonly>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var vueApp = new Vue({
+        el: '#app',
+        data: {
+            GoldWeight: 1
+            @*GoldPrice24: @Html.DisplayFor(m=> m.GoldPrice24),
+            GoldPrice22: @Html.DisplayFor(m=> m.GoldPrice22),
+            GoldPrice21: @Html.DisplayFor(m=> m.GoldPrice21),
+            GoldPrice18: @Html.DisplayFor(m=> m.GoldPrice18)*@
+        },
+        computed: {
+            GoldPrice24:  function () {
+                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice24);
+            },
+            GoldPrice22: function () {
+                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice22);
+            },
+            GoldPrice21: function () {
+                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice21);
+            },
+            GoldPrice18: function () {
+                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice18);
+            }
+        }
+
+    });
+</script>
+
+@*<h1>UaeHome</h1>
+
+
+    <div>
+        <h4>mUaeHome</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.iID)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.iID)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GoldPriceOz)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.GoldPriceOz)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GoldPrice24)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.GoldPrice24)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GoldPrice22)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.GoldPrice22)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GoldPrice21)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.GoldPrice21)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GoldPrice18)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.GoldPrice18)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.GoldPriceUpdate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.GoldPriceUpdate)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Super98)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Super98)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Special95)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Special95)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.EPlus91)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.EPlus91)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Diesel)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Diesel)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>*@
