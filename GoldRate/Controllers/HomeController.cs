@@ -91,7 +91,7 @@ namespace GoldRate.Controllers
             List<mGoldRate> _mGoldRate = new List<mGoldRate>();
             if (!CheckApi("https://localhost:44316/goldrate"))
             {
-                return View();
+                return View(_mUaeHome);
             }
             using (var client = new HttpClient())
             {

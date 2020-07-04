@@ -5,7 +5,8 @@
     ViewData["Title"] = "UAE Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1 class="mt-5">UAE Gold Rates (AED)</h1>
+<h3 class="mt-5">UAE Gold Rates (AED)</h3>
+
 <p class="lead">Update On [ UAE Time <code>@DateTime.Now.ToLongDateString() @DateTime.Now.ToLongTimeString()  </code>] [ UTC Time <code>  @DateTime.UtcNow]</code>.</p>
 <p>Source: Dubai Gold & Jewelery Group.</p>
 <div class="row">
@@ -52,14 +53,6 @@
 </div>
 <hr />
 <div id="app" class="row">
-    @*<div>
-            <h1>Count is: {{ count }}</h1>
-            <br>
-            <p>
-                <button v-on:click="count++">Increment Count!</button>
-            </p>
-            <br>
-        </div>*@
     <div class="col-lg-12 col-sm-12">
         <div class="card bg-light text-dark mb-4">
             <div class="row m-2">
@@ -70,11 +63,11 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-danger font-weight-bold">g</span>
                             </div>
-                            <input  type="number" name="GoldWeight" class="form-control text-info"
+                            <input type="number" name="GoldWeight" class="form-control text-info"
                                    id="GoldWeight" placeholder="Enter Gold Weight (gram)" v-model="GoldWeight" maxlength="3"
                                    :min="1" :max="3000" onKeyPress="if(this.value.length>3    ) return false;">
                         </div>
-                       
+
 
                     </div>
 
@@ -119,7 +112,7 @@
                                 <span class="input-group-text text-danger font-weight-bold">AED</span>
                             </div>
                             <input type="number" name="GoldValue" class="form-control text-black bg-white font-weight-bold" id="GoldValue" placeholder="000.000" v-model="GoldPrice21" readonly>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
@@ -139,29 +132,166 @@
         </div>
     </div>
 </div>
+<hr />
+<h3 class="mt-5">UAE Fuel Price (AED)</h3>
+<h5>Month :<span class="font-weight-bold"> @DateTime.Now.ToString("MMMM-yyyy")</span></h5>
+<p class="small">Prices in AED per liter (inclusive of VAT)</p>
+<p>Source: ADNOC.</p>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body"><i class="fas fa-gas-pump"></i> E-Plus 91</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.EPlus91)
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success     text-white mb-4">
+            <div class="card-body"><i class="fas fa-gas-pump"></i> Special 95</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.Special95)
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-info text-white mb-4">
+            <div class="card-body"><i class="fas fa-gas-pump"></i> Super 98</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.Super98)
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body"><i class="fas fa-gas-pump"></i> Diesel</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                AED    @Html.DisplayFor(model => model.Diesel)
+            </div>
+        </div>
+    </div>
+
+</div>
+<hr />
+<div id="app2" class="row">
+    <div class="col-lg-12 col-sm-12">
+        <div class="card bg-secondary text-light mb-4">
+            <div class="row m-2">
+                <div class="col-xl-3 col-md-6 ">
+                    <div class="form-group">
+                        <label for="FuelValue">Enter Fuel Liter</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">Ltr</span>
+                            </div>
+                            <input type="number" name="FuelValue" class="form-control text-info"
+                                   id="FuelValue" placeholder="Enter Fuel Liter" v-model="FuelValue" maxlength="3"
+                                   :min="1" :max="3000" onKeyPress="if(this.value.length>3    ) return false;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-2">
+                <div class="col-xl-3 col-md-6">
+
+
+                    <div class="form-group">
+                        <label for="GoldValue">
+                            Price For {{ FuelValue }}  liter E-Plus 91 <br />&#64;&nbsp;AED&nbsp; @Html.DisplayFor(model => model.EPlus91)
+                        </label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="EPlus91" class="form-control text-black bg-white font-weight-bold" id="EPlus91" placeholder="000.000" v-model="EPlus91" readonly>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="form-group">
+                        <label for="GoldValue">  Price For {{ FuelValue }}  liter Special 95<br />&#64;&nbsp;AED&nbsp;@Html.DisplayFor(model => model.Special95)</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="Special95" class="form-control text-black bg-white font-weight-bold" id="Special95" placeholder="000.000" v-model="Special95" readonly>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="form-group">
+                        <label for="GoldValue"> Price For {{ FuelValue }} liter Super 98 <br />&#64;&nbsp;AED&nbsp;@Html.DisplayFor(model => model.Super98)</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="Super98" class="form-control text-black bg-white font-weight-bold" id="Super98" placeholder="000.000" v-model="Super98" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="form-group">
+                        <label for="GoldValue"> Price For {{ FuelValue }} liter Diesel<br /> &#64;&nbsp;AED&nbsp;@Html.DisplayFor(model => model.Diesel)</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-danger font-weight-bold">AED</span>
+                            </div>
+                            <input type="number" name="Diesel" class="form-control text-black bg-white font-weight-bold" id="Diesel" placeholder="000.000" v-model="Diesel" readonly>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     var vueApp = new Vue({
         el: '#app',
         data: {
             GoldWeight: 1
-            @*GoldPrice24: @Html.DisplayFor(m=> m.GoldPrice24),
-            GoldPrice22: @Html.DisplayFor(m=> m.GoldPrice22),
-            GoldPrice21: @Html.DisplayFor(m=> m.GoldPrice21),
-            GoldPrice18: @Html.DisplayFor(m=> m.GoldPrice18)*@
         },
         computed: {
             GoldPrice24:  function () {
-                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice24);
+                return (this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice24)).toFixed(2);
             },
             GoldPrice22: function () {
-                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice22);
+                return (this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice22)).toFixed(2);
             },
             GoldPrice21: function () {
-                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice21);
+                return (this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice21)).toFixed(2);
             },
             GoldPrice18: function () {
-                return this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice18);
+                return (this.GoldWeight * @Html.DisplayFor(m=> m.GoldPrice18)).toFixed(2);
             }
+        }
+    });
+    var vueApp = new Vue({
+        el: '#app2',
+        data: {
+
+            FuelValue:1
+
+        },
+        computed: {
+
+            EPlus91:  function () {
+                return (this.FuelValue * @Html.DisplayFor(m=> m.EPlus91)).toFixed(2);
+            },
+            Special95: function () {
+                return (this.FuelValue * @Html.DisplayFor(m=> m.Special95)).toFixed(2);
+            },
+            Super98: function () {
+                return (this.FuelValue * @Html.DisplayFor(m=> m.Super98)).toFixed(2);
+            },
+            Diesel: function () {
+                return (this.FuelValue * @Html.DisplayFor(m=> m.Diesel)).toFixed(2);
+            },
         }
 
     });
